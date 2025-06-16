@@ -1,6 +1,0 @@
-Warning message:
-In xy.coords(x, y, xlabel, ylabel, log) :
-  78 y values <= 0 omitted from logarithmic plot
-null device 
-          1 
-Plot saved as plot_data_vid2_frames.dat.png
