@@ -18,7 +18,7 @@
                 "input_dir": {
                     "type": "string",
                     "format": "directory-path",
-                    "description": "video input in mp4 format"
+                    "description": "video input in mp4 format",
                     "fa_icon": "fas fa-folder-open"
                 },
                 "outdir": {
