@@ -1,0 +1,7 @@
+Unable to find image 'ubuntu:22.04' locally
+22.04: Pulling from library/ubuntu
+89dc6ea4eae2: Pulling fs layer
+89dc6ea4eae2: Download complete
+89dc6ea4eae2: Pull complete
+Digest: sha256:01a3ee0b5e413cefaaffc6abe68c9c37879ae3cced56a8e088b1649e5b269eee
+Status: Downloaded newer image for ubuntu:22.04
