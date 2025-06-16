@@ -3,3 +3,4 @@
 2025-06-16 08:30:10	58.5s	intergalactic_wescoff	OK	162713104b19d3ee9a40ea37b69eb959	753c0178-b959-47df-b6b2-ceb9b5bd4e43	nextflow run main.nf --input input/ --outdir results --thresh_moving 0 -resume
 2025-06-16 08:36:49	42.4s	maniac_wegener	OK	162713104b19d3ee9a40ea37b69eb959	753c0178-b959-47df-b6b2-ceb9b5bd4e43	nextflow run main.nf --input input/ --outdir results --thresh_moving 0 -resume
 2025-06-16 08:40:38	39.7s	ridiculous_dubinsky	OK	162713104b19d3ee9a40ea37b69eb959	753c0178-b959-47df-b6b2-ceb9b5bd4e43	nextflow run main.nf --input input/ --outdir results --thresh_moving 0 -resume
+2025-06-16 10:55:54	39.2s	astonishing_kalman	OK	162713104b19d3ee9a40ea37b69eb959	753c0178-b959-47df-b6b2-ceb9b5bd4e43	nextflow run main.nf --input input/ --outdir results --thresh_moving 0 -resume
