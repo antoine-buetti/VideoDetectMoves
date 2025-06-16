@@ -1,0 +1,42 @@
+Unable to find image 'r-base:4.3.0' locally
+4.3.0: Pulling from library/r-base
+dfaac2cc63fd: Pulling fs layer
+d5a99ed87807: Pulling fs layer
+9d70dc2acb54: Pulling fs layer
+e86bd4237083: Pulling fs layer
+3abea49891a2: Pulling fs layer
+01cd65c0aa29: Pulling fs layer
+de58c0ddf9dc: Pulling fs layer
+e86bd4237083: Waiting
+3abea49891a2: Waiting
+01cd65c0aa29: Waiting
+de58c0ddf9dc: Waiting
+d5a99ed87807: Verifying Checksum
+d5a99ed87807: Download complete
+9d70dc2acb54: Verifying Checksum
+9d70dc2acb54: Download complete
+e86bd4237083: Verifying Checksum
+e86bd4237083: Download complete
+3abea49891a2: Verifying Checksum
+3abea49891a2: Download complete
+01cd65c0aa29: Verifying Checksum
+01cd65c0aa29: Download complete
+dfaac2cc63fd: Verifying Checksum
+dfaac2cc63fd: Download complete
+de58c0ddf9dc: Verifying Checksum
+de58c0ddf9dc: Download complete
+dfaac2cc63fd: Pull complete
+d5a99ed87807: Pull complete
+9d70dc2acb54: Pull complete
+e86bd4237083: Pull complete
+3abea49891a2: Pull complete
+01cd65c0aa29: Pull complete
+de58c0ddf9dc: Pull complete
+Digest: sha256:5c2fc4ae3c6cb185d5e9e352f5e6add83f800d0e12b9f1074d038152ddfa0998
+Status: Downloaded newer image for r-base:4.3.0
+Warning message:
+In xy.coords(x, y, xlabel, ylabel, log) :
+  84 y values <= 0 omitted from logarithmic plot
+null device 
+          1 
+Plot saved as plot_data_UFO_Kalmar_20140401_frames.dat.png

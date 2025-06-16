@@ -1,0 +1,3 @@
+Warning message:
+In xy.coords(x, y, xlabel, ylabel, log) :
+  78 y values <= 0 omitted from logarithmic plot
