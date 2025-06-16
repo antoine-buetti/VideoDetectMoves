@@ -11,9 +11,14 @@
             "fa_icon": "fas fa-terminal",
             "description": "Define where the pipeline should find input data and save output data.",
             "required": [
+                "input_dir",
                 "outdir"
             ],
             "properties": {
+                "input_dir": {
+                    "type": "string",
+                    "description": "video input in mp4 format"
+                },
                 "outdir": {
                     "type": "string",
                     "format": "directory-path",
@@ -29,16 +34,12 @@
         }
     ],
     "properties": {
-        "input_dir": {
-            "type": "string"
-        },
         "thresh_moving": {
             "type": "string",
             "default": "0"
         }
     },
     "required": [
-        "input_dir",
         "thresh_moving"
     ]
 }
