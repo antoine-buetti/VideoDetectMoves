@@ -36,8 +36,7 @@ log.info """\
 }
 
 process get_frames {
-    // Let Wave build a container with the required tools
-    conda "conda-forge::procps-ng conda-forge::mplayer"
+    container 'alpine:latest'
     tag "mplayer"
 
     input:
@@ -48,10 +47,15 @@ process get_frames {
 
     script:
     """
+    # Install mplayer and required tools
+    apk update
+    apk add --no-cache mplayer procps bash
+
     mkdir "${input.baseName}_frames"
     mplayer -nosound -vo jpeg:outdir="${input.baseName}_frames" -speed 100 "$input" -benchmark
     """
 }
+
 
 process movement_spotter {
     container 'vulhub/imagemagick:7.0.10-36-php'
