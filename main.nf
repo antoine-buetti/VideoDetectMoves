@@ -48,6 +48,8 @@ process get_frames {
 
     script:
     """
+    apt-get update
+    apt-get install -y procps
     mkdir "${input.baseName}_frames"
     mplayer -nosound -vo jpeg:outdir="${input.baseName}_frames" -speed 100 "$input" -benchmark
     """
