@@ -1,1 +1,1 @@
-2025-06-16 11:51:39	39s	special_monod	OK	162713104b19d3ee9a40ea37b69eb959	e3391d28-1bee-41d9-8dbb-22855972ff2b	nextflow run main.nf --input input/ --outdir results --thresh_moving 0 -resume
+2025-07-11 17:49:13	1m 19s	special_goldberg	OK	ee8daf2551b7fda2144c0a90da94a64f	1bc05589-bdad-49f3-91d6-63b896251b53	nextflow run main.nf --input input/ --outdir results --thresh_moving 0 -resume
