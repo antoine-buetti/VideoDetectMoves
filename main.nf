@@ -36,7 +36,7 @@ log.info """\
 }
 
 process get_frames {
-    container 'alpine:latest'
+    // Remove the conda directive and let Wave build the container
     tag "mplayer"
 
     input:
@@ -47,10 +47,6 @@ process get_frames {
 
     script:
     """
-    # Install mplayer and required tools
-    apk update
-    apk add --no-cache mplayer procps bash
-
     mkdir "${input.baseName}_frames"
     mplayer -nosound -vo jpeg:outdir="${input.baseName}_frames" -speed 100 "$input" -benchmark
     """
