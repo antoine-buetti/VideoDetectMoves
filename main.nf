@@ -36,7 +36,7 @@ log.info """\
 }
 
 process get_frames {
-    // Remove the conda directive and let Wave build the container
+    container 'ubuntu:latest'
     tag "mplayer"
 
     input:
@@ -47,10 +47,12 @@ process get_frames {
 
     script:
     """
+    apt-get update && apt-get install -y mplayer procps
     mkdir "${input.baseName}_frames"
     mplayer -nosound -vo jpeg:outdir="${input.baseName}_frames" -speed 100 "$input" -benchmark
     """
 }
+
 
 
 process movement_spotter {
