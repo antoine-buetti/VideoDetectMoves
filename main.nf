@@ -35,24 +35,6 @@ log.info """\
 
 }
 
-
-# process get_frames {
-#     container 'olmesm/mplayer-docker'
-#     tag "mplayer"
-# 
-#     input:
-#     path input
-# 
-#     output:
-#     path '*_frames', emit: frames_dir
-# 
-#     script:
-#     """
-#     mkdir "${input.baseName}_frames"
-#     mplayer -nosound -vo jpeg:outdir="${input.baseName}_frames" -speed 100 "$input" -benchmark
-#     """
-# }
-
 process get_frames {
     // Let Wave build a container with the required tools
     conda "conda-forge::procps-ng conda-forge::mplayer"
