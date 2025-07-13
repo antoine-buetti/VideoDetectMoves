@@ -37,7 +37,7 @@ jobs:
         run: |
           bash clean.sh
           echo Running Analysis
-          bash run.sh
+          #bash run.sh
 
           git config --global user.name "antoine-buetti"
           git config --global user.email "antoine.buetti@gmail.com"
