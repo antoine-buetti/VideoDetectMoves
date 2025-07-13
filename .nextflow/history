@@ -1,1 +1,0 @@
-2025-07-13 10:00:20	1m 13s	sharp_noyce	OK	91df47365521febf977a8550cbf8c789	2df2bded-0063-413f-be29-cd4995ac276b	nextflow run main.nf --input input/ --outdir results --thresh_moving 0 -resume
