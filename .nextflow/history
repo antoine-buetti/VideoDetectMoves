@@ -1,1 +1,1 @@
-2025-07-13 09:19:03	59.2s	curious_mcclintock	OK	95e0811c0c4fa19facdca8ef1aed70ef	2ac3028f-bb4f-439d-bc29-71fe01411ca8	nextflow run main.nf --input input/ --outdir results --thresh_moving 0 -resume
+2025-07-13 10:00:20	1m 13s	sharp_noyce	OK	91df47365521febf977a8550cbf8c789	2df2bded-0063-413f-be29-cd4995ac276b	nextflow run main.nf --input input/ --outdir results --thresh_moving 0 -resume
