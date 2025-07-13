@@ -36,7 +36,7 @@ log.info """\
 }
 
 process get_frames {
-    container 'ubuntu:latest'
+    container 'ubuntu:22.04'
     tag "mplayer"
 
     input:
@@ -56,7 +56,7 @@ process get_frames {
 
 
 process movement_spotter {
-    container 'vulhub/imagemagick:7.0.10-36-php'
+    container 'ubuntu:22.04'
     tag "imagemagick"
 
     input:
