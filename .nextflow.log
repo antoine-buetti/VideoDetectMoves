@@ -1,43 +1,43 @@
-Jul-11 17:49:12.161 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf --input input/ --outdir results --thresh_moving 0 -resume
-Jul-11 17:49:12.336 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.6
-Jul-11 17:49:12.413 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/runner/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4,nf-wave@1.12.1
-Jul-11 17:49:12.498 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Jul-11 17:49:12.500 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Jul-11 17:49:12.503 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
-Jul-11 17:49:12.533 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Jul-11 17:49:12.568 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/runner/work/VideoDetectMoves/VideoDetectMoves/nextflow.config
-Jul-11 17:49:12.572 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/runner/work/VideoDetectMoves/VideoDetectMoves/nextflow.config
-Jul-11 17:49:12.611 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/runner/.nextflow/secrets/store.json
-Jul-11 17:49:12.616 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@7a94b64e] - activable => nextflow.secret.LocalSecretsProvider@7a94b64e
-Jul-11 17:49:12.633 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
-Jul-11 17:49:13.185 [main] WARN  nextflow.config.ConfigBuilder - It appears you have never run this project before -- Option `-resume` is ignored
-Jul-11 17:49:13.218 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
-Jul-11 17:49:13.237 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [special_goldberg] DSL2 - revision: ee8daf2551
-Jul-11 17:49:13.239 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Jul-11 17:49:13.239 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Jul-11 17:49:13.308 [main] DEBUG nextflow.Session - Session UUID: 1bc05589-bdad-49f3-91d6-63b896251b53
-Jul-11 17:49:13.309 [main] DEBUG nextflow.Session - Run name: special_goldberg
-Jul-11 17:49:13.310 [main] DEBUG nextflow.Session - Executor pool size: 4
-Jul-11 17:49:13.325 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Jul-11 17:49:13.332 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Jul-11 17:49:13.446 [main] DEBUG nextflow.cli.CmdRun - 
+Jul-13 09:19:02.719 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf --input input/ --outdir results --thresh_moving 0 -resume
+Jul-13 09:19:02.847 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.6
+Jul-13 09:19:02.899 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/runner/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4,nf-wave@1.12.1
+Jul-13 09:19:02.966 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-13 09:19:02.967 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-13 09:19:02.970 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jul-13 09:19:02.989 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-13 09:19:03.016 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/runner/work/VideoDetectMoves/VideoDetectMoves/nextflow.config
+Jul-13 09:19:03.020 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/runner/work/VideoDetectMoves/VideoDetectMoves/nextflow.config
+Jul-13 09:19:03.052 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/runner/.nextflow/secrets/store.json
+Jul-13 09:19:03.056 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@7a94b64e] - activable => nextflow.secret.LocalSecretsProvider@7a94b64e
+Jul-13 09:19:03.072 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jul-13 09:19:03.528 [main] WARN  nextflow.config.ConfigBuilder - It appears you have never run this project before -- Option `-resume` is ignored
+Jul-13 09:19:03.557 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Jul-13 09:19:03.572 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [curious_mcclintock] DSL2 - revision: 95e0811c0c
+Jul-13 09:19:03.574 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-13 09:19:03.574 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-13 09:19:03.626 [main] DEBUG nextflow.Session - Session UUID: 2ac3028f-bb4f-439d-bc29-71fe01411ca8
+Jul-13 09:19:03.626 [main] DEBUG nextflow.Session - Run name: curious_mcclintock
+Jul-13 09:19:03.627 [main] DEBUG nextflow.Session - Executor pool size: 4
+Jul-13 09:19:03.638 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-13 09:19:03.643 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-13 09:19:03.732 [main] DEBUG nextflow.cli.CmdRun - 
   Version: 25.04.6 build 5954
   Created: 01-07-2025 11:27 UTC 
-  System: Linux 6.11.0-1015-azure
+  System: Linux 6.11.0-1018-azure
   Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 17.0.15+6
   Encoding: UTF-8 (UTF-8)
-  Process: 2625@pkrvmfkh1xnbeme [10.1.0.145]
-  CPUs: 4 - Mem: 15.6 GB (13.5 GB) - Swap: 4 GB (4 GB)
-Jul-11 17:49:13.486 [main] DEBUG nextflow.Session - Work-dir: /home/runner/work/VideoDetectMoves/VideoDetectMoves/work [ext2/ext3]
-Jul-11 17:49:13.487 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/runner/work/VideoDetectMoves/VideoDetectMoves/bin
-Jul-11 17:49:13.498 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Jul-11 17:49:13.509 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Jul-11 17:49:13.516 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
-Jul-11 17:49:13.545 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Jul-11 17:49:13.556 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 5; maxThreads: 1000
-Jul-11 17:49:13.625 [main] DEBUG nextflow.Session - Session start
-Jul-11 17:49:14.140 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Jul-11 17:49:14.183 [main] INFO  nextflow.Nextflow - Movement Finder in Fixed-camera Videos
+  Process: 2617@pkrvmq0rgcvqdmg [10.1.0.148]
+  CPUs: 4 - Mem: 15.6 GB (13.6 GB) - Swap: 4 GB (4 GB)
+Jul-13 09:19:03.764 [main] DEBUG nextflow.Session - Work-dir: /home/runner/work/VideoDetectMoves/VideoDetectMoves/work [ext2/ext3]
+Jul-13 09:19:03.764 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/runner/work/VideoDetectMoves/VideoDetectMoves/bin
+Jul-13 09:19:03.774 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-13 09:19:03.785 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-13 09:19:03.791 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Jul-13 09:19:03.818 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-13 09:19:03.828 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 5; maxThreads: 1000
+Jul-13 09:19:03.891 [main] DEBUG nextflow.Session - Session start
+Jul-13 09:19:04.367 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-13 09:19:04.403 [main] INFO  nextflow.Nextflow - Movement Finder in Fixed-camera Videos
 ===================================
 input        : /home/runner/work/VideoDetectMoves/VideoDetectMoves/input/
 outdir       : results
@@ -47,52 +47,52 @@ Example usage: nextflow run main.nf  --input your_folder_with_mp4_video_files  -
 Output: "plot_...png" showing a profile of the video and how much movement was detected. "moving_frames_..." containing the snapshots extracted where the movement occurred, and the pixels that were tracked.
 ===================================
 
-Jul-11 17:49:14.343 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Jul-11 17:49:14.344 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Jul-11 17:49:14.351 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
-Jul-11 17:49:14.359 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=4; memory=15.6 GB; capacity=4; pollInterval=100ms; dumpInterval=5m
-Jul-11 17:49:14.362 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
-Jul-11 17:49:14.394 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'get_frames': maxForks=0; fair=false; array=0
-Jul-11 17:49:14.450 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Jul-11 17:49:14.450 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Jul-11 17:49:14.452 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'movement_spotter': maxForks=0; fair=false; array=0
-Jul-11 17:49:14.491 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Jul-11 17:49:14.492 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Jul-11 17:49:14.494 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'get_all_moving_frames': maxForks=0; fair=false; array=0
-Jul-11 17:49:14.507 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Jul-11 17:49:14.507 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Jul-11 17:49:14.508 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'plot': maxForks=0; fair=false; array=0
-Jul-11 17:49:14.512 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: plot, get_frames, movement_spotter, get_all_moving_frames
-Jul-11 17:49:14.515 [main] DEBUG nextflow.Session - Igniting dataflow network (5)
-Jul-11 17:49:14.527 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > get_frames
-Jul-11 17:49:14.528 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > movement_spotter
-Jul-11 17:49:14.528 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > get_all_moving_frames
-Jul-11 17:49:14.528 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > plot
-Jul-11 17:49:14.529 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
-  Script_a1b84636f38421c1: /home/runner/work/VideoDetectMoves/VideoDetectMoves/main.nf
-Jul-11 17:49:14.529 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
-Jul-11 17:49:14.530 [main] DEBUG nextflow.Session - Session await
-Jul-11 17:49:14.531 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /home/runner/work/VideoDetectMoves/VideoDetectMoves/input/; pattern: *.mp4; options: [:]
-Jul-11 17:49:14.751 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Jul-11 17:49:14.754 [Task submitter] INFO  nextflow.Session - [e9/4f41fd] Submitted process > get_frames (mplayer)
-Jul-11 17:49:52.641 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: get_frames (mplayer); status: COMPLETED; exit: 0; error: -; workDir: /home/runner/work/VideoDetectMoves/VideoDetectMoves/work/e9/4f41fd40b7f4461b6d73599b175c27]
-Jul-11 17:49:52.642 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Jul-11 17:49:52.695 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Jul-11 17:49:52.697 [Task submitter] INFO  nextflow.Session - [f9/2b971c] Submitted process > movement_spotter (imagemagick)
-Jul-11 17:50:13.141 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: movement_spotter (imagemagick); status: COMPLETED; exit: 0; error: -; workDir: /home/runner/work/VideoDetectMoves/VideoDetectMoves/work/f9/2b971cbbc318539da7ba86dd7ca815]
-Jul-11 17:50:13.174 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Jul-11 17:50:13.175 [Task submitter] INFO  nextflow.Session - [19/f2853e] Submitted process > plot (R_plot)
-Jul-11 17:50:13.184 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Jul-11 17:50:13.188 [Task submitter] INFO  nextflow.Session - [b5/36ec5e] Submitted process > get_all_moving_frames (ubuntu)
-Jul-11 17:50:18.944 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: get_all_moving_frames (ubuntu); status: COMPLETED; exit: 0; error: -; workDir: /home/runner/work/VideoDetectMoves/VideoDetectMoves/work/b5/36ec5eea54ad4db04c67b3ee32245f]
-Jul-11 17:50:18.979 [TaskFinalizer-3] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Jul-11 17:50:31.589 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: plot (R_plot); status: COMPLETED; exit: 0; error: -; workDir: /home/runner/work/VideoDetectMoves/VideoDetectMoves/work/19/f2853e1ed2792c043e69506cb0f455]
-Jul-11 17:50:31.596 [main] DEBUG nextflow.Session - Session await > all processes finished
-Jul-11 17:50:31.690 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
-Jul-11 17:50:31.690 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Jul-11 17:50:31.693 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
-Jul-11 17:50:31.693 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
-Jul-11 17:50:31.698 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=4; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=1m 22s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=2; peakMemory=0; ]
-Jul-11 17:50:31.763 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Jul-11 17:50:31.776 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
-Jul-11 17:50:31.777 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+Jul-13 09:19:04.533 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-13 09:19:04.534 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-13 09:19:04.553 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-13 09:19:04.559 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=4; memory=15.6 GB; capacity=4; pollInterval=100ms; dumpInterval=5m
+Jul-13 09:19:04.562 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Jul-13 09:19:04.586 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'get_frames': maxForks=0; fair=false; array=0
+Jul-13 09:19:04.626 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-13 09:19:04.627 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-13 09:19:04.628 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'movement_spotter': maxForks=0; fair=false; array=0
+Jul-13 09:19:04.645 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-13 09:19:04.646 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-13 09:19:04.647 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'get_all_moving_frames': maxForks=0; fair=false; array=0
+Jul-13 09:19:04.658 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-13 09:19:04.658 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-13 09:19:04.659 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'plot': maxForks=0; fair=false; array=0
+Jul-13 09:19:04.662 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: plot, get_frames, movement_spotter, get_all_moving_frames
+Jul-13 09:19:04.665 [main] DEBUG nextflow.Session - Igniting dataflow network (5)
+Jul-13 09:19:04.674 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > get_frames
+Jul-13 09:19:04.674 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > movement_spotter
+Jul-13 09:19:04.675 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /home/runner/work/VideoDetectMoves/VideoDetectMoves/input/; pattern: *.mp4; options: [:]
+Jul-13 09:19:04.676 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > get_all_moving_frames
+Jul-13 09:19:04.676 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > plot
+Jul-13 09:19:04.676 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_554ef7aed3acb962: /home/runner/work/VideoDetectMoves/VideoDetectMoves/main.nf
+Jul-13 09:19:04.677 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-13 09:19:04.677 [main] DEBUG nextflow.Session - Session await
+Jul-13 09:19:04.914 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-13 09:19:04.917 [Task submitter] INFO  nextflow.Session - [6c/5c0528] Submitted process > get_frames (mplayer)
+Jul-13 09:19:29.001 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: get_frames (mplayer); status: COMPLETED; exit: 0; error: -; workDir: /home/runner/work/VideoDetectMoves/VideoDetectMoves/work/6c/5c0528ec602b375fcb07548f8ac5da]
+Jul-13 09:19:29.003 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-13 09:19:29.052 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-13 09:19:29.053 [Task submitter] INFO  nextflow.Session - [61/0d494b] Submitted process > movement_spotter (imagemagick)
+Jul-13 09:19:47.511 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: movement_spotter (imagemagick); status: COMPLETED; exit: 0; error: -; workDir: /home/runner/work/VideoDetectMoves/VideoDetectMoves/work/61/0d494b2ea9948980ff1fd74031a040]
+Jul-13 09:19:47.537 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-13 09:19:47.538 [Task submitter] INFO  nextflow.Session - [e8/b5d042] Submitted process > plot (R_plot)
+Jul-13 09:19:47.552 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-13 09:19:47.554 [Task submitter] INFO  nextflow.Session - [17/6f2499] Submitted process > get_all_moving_frames (ubuntu)
+Jul-13 09:19:47.824 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: get_all_moving_frames (ubuntu); status: COMPLETED; exit: 0; error: -; workDir: /home/runner/work/VideoDetectMoves/VideoDetectMoves/work/17/6f2499fc098d915869044b42898e19]
+Jul-13 09:19:47.856 [TaskFinalizer-3] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-13 09:20:02.011 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: plot (R_plot); status: COMPLETED; exit: 0; error: -; workDir: /home/runner/work/VideoDetectMoves/VideoDetectMoves/work/e8/b5d042ba6a39e43301be5e06b552f1]
+Jul-13 09:20:02.019 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-13 09:20:02.112 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Jul-13 09:20:02.112 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-13 09:20:02.114 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Jul-13 09:20:02.115 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Jul-13 09:20:02.121 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=4; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=57.1s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=2; peakMemory=0; ]
+Jul-13 09:20:02.199 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-13 09:20:02.212 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Jul-13 09:20:02.213 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
