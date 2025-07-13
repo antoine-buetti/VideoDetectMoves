@@ -46,6 +46,7 @@ process get_frames {
 
     script:
     """
+    apt-get update && apt-get install -y mplayer
     mkdir "${input.baseName}_frames"
     mplayer -nosound -vo jpeg:outdir="${input.baseName}_frames" -speed 100 "$input" -benchmark
     """
@@ -65,6 +66,7 @@ process movement_spotter {
 
     script:
     """
+    apt-get update && apt-get install -y imagemagick
     N=\$(ls ${frames_dir}/*.jpg | wc | awk '{print \$1}')
     for i in `seq 1 \$((\$N-1))`; do # last frame -2 because compare 2 a 2
     cmd=\$(printf "compare -metric AE -fuzz 25%% ${frames_dir}/%08d.jpg ${frames_dir}/%08d.jpg traceDiffFrame_%08d 2>> data_${frames_dir}.dat ; echo >> data_${frames_dir}.dat \n" \$i \$((\$i+1)) \$i )
@@ -115,35 +117,8 @@ process plot {
     
     script:
     """
-    #!/usr/bin/env Rscript
-
-    # Read the data (single column, no header)
-    data <- read.table('${data_movement}', header=FALSE)
-
-    # Create frame numbers (1, 2, 3, ...)
-    frame_numbers <- 1:nrow(data)
-    movement_values <- data[,1]
-
-    # Create the plot
-    png('plot_${data_movement}.png', width=800, height=600)
-
-    # Set up the plot with log scale on y-axis
-    plot(frame_numbers, movement_values,
-         type='b',  # 'b' for both points and lines
-         log='y',   # log scale on y-axis
-         main='${data_movement.baseName}',
-         xlab='Frame Number',
-         ylab='Movement',
-         pch=16,    # solid circles for points
-         col='blue')
-
-    # Add grid for better readability
-    grid()
-
-    # Close the device
-    dev.off()
-
-    cat('Plot saved as plot_${data_movement}.png\\n')
+    apt-get update && apt-get install -y r-base
+    Rscript plot.R
     """
 }
 
