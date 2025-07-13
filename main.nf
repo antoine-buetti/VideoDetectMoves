@@ -110,7 +110,7 @@ process get_all_moving_frames {
 
 
 process plot {
-    container 'r-base:4.3.0'
+    container 'quay.io/biocontainers/r-base@sha256:af473d54a13752a376d79dca5534dc50968a217e9709368526d4b1d63c7a7443'
     tag "R_plot"
     publishDir params.outdir, mode:'copy'
 
