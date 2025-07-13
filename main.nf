@@ -117,7 +117,6 @@ process plot {
     
     script:
     """
-    apt-get update && apt-get install -y r-base
     Rscript plot.R
     """
 }
