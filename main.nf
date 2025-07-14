@@ -46,7 +46,6 @@ process get_frames {
 
     script:
     """
-    apt-get update && apt-get install -y mplayer
     mkdir "${input.baseName}_frames"
     mplayer -nosound -vo jpeg:outdir="${input.baseName}_frames" -speed 100 "$input" -benchmark
     """
@@ -66,7 +65,6 @@ process movement_spotter {
 
     script:
     """
-    apt-get update && apt-get install -y imagemagick
     N=\$(ls ${frames_dir}/*.jpg | wc | awk '{print \$1}')
     for i in `seq 1 \$((\$N-1))`; do # last frame -2 because compare 2 a 2
     cmd=\$(printf "compare -metric AE -fuzz 25%% ${frames_dir}/%08d.jpg ${frames_dir}/%08d.jpg traceDiffFrame_%08d 2>> data_${frames_dir}.dat ; echo >> data_${frames_dir}.dat \n" \$i \$((\$i+1)) \$i )
@@ -148,6 +146,5 @@ process plot {
     cat('Plot saved as plot_${data_movement}.png\\n')
     """
 }
-
 
 
