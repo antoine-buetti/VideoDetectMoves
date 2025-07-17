@@ -53,6 +53,7 @@ process get_frames {
 
 process movement_spotter {
     tag "imagemagick"
+    publishDir params.outdir, mode:'copy', pattern: 'data_*.dat'
 
     input:
     path frames_dir
