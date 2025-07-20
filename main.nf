@@ -68,7 +68,7 @@ process movement_spotter {
     """
     N=\$(ls ${frames_dir}/*.jpg | wc | awk '{print \$1}')
     for i in `seq 1 \$((\$N-1))`; do # last frame -2 because compare 2 a 2
-    cmd=\$(printf "compare -metric AE -fuzz 25%% ${frames_dir}/%08d.jpg ${frames_dir}/%08d.jpg traceDiffFrame_%08d 2>> data_${frames_dir}.dat ; echo >> data_${frames_dir}.dat \n" \$i \$((\$i+1)) \$i )
+    cmd=\$(printf "compare -metric AE -fuzz 5%% ${frames_dir}/%08d.jpg ${frames_dir}/%08d.jpg traceDiffFrame_%08d 2>> data_${frames_dir}.dat ; echo >> data_${frames_dir}.dat \n" \$i \$((\$i+1)) \$i )
     echo \$cmd >> tmp.sh
     done
     bash tmp.sh 
