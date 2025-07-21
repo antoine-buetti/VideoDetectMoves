@@ -2,6 +2,7 @@
 
 params.input_dir="$projectDir/input/"
 params.outdir="results"
+params.fuzz=25
 params.thresh_moving=0
 
 workflow {
@@ -13,10 +14,13 @@ log.info """\
     ===================================
     input        : ${params.input_dir}
     outdir       : ${params.outdir}
+    fuzz         : ${params.fuzz}
     thresh_moving: ${params.thresh_moving}
 
-    Example usage: nextflow run main.nf  --input your_folder_with_mp4_video_files  --outdir results  --thresh_moving 0
+    Example usage: nextflow run main.nf  --input your_folder_with_mp4_video_files  --outdir results  --fuzz 25  --thresh_moving 0
     Output: "plot_...png" showing a profile of the video and how much movement was detected. "moving_frames_..." containing the snapshots extracted where the movement occurred, and the pixels that were tracked.
+
+    The parameter fuzz 15% means that pixels within 25% color difference are treated as equal. You can increase it to make it even more tolerant (a lower fuzz is more sensitive but more prone to noise).
     ===================================
     """
     .stripIndent()
@@ -68,7 +72,7 @@ process movement_spotter {
     """
     N=\$(ls ${frames_dir}/*.jpg | wc | awk '{print \$1}')
     for i in `seq 1 \$((\$N-1))`; do # last frame -2 because compare 2 a 2
-    cmd=\$(printf "compare -metric AE -fuzz 15%% ${frames_dir}/%08d.jpg ${frames_dir}/%08d.jpg traceDiffFrame_%08d 2>> data_${frames_dir}.dat ; echo >> data_${frames_dir}.dat \n" \$i \$((\$i+1)) \$i )
+    cmd=\$(printf "compare -metric AE -fuzz ${params.fuzz}%% ${frames_dir}/%08d.jpg ${frames_dir}/%08d.jpg traceDiffFrame_%08d 2>> data_${frames_dir}.dat ; echo >> data_${frames_dir}.dat \n" \$i \$((\$i+1)) \$i )
     echo \$cmd >> tmp.sh
     done
     bash tmp.sh 
