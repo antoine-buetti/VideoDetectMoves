@@ -64,7 +64,7 @@ process movement_spotter {
 
     output:
     path 'data_*.dat', emit: data_list
-    path 'traceDiff_*', emit: traceDiff_frames_dir
+    path 'traceDiff_*', emit: traceDiff_frames_dir, optional: true
 
     // stdout
 
@@ -79,7 +79,7 @@ process movement_spotter {
 
     # spostare tutte le frames di diff pixel in dir apposita:
     mkdir traceDiff_${frames_dir}
-    mv  traceDiffFrame_* traceDiff_${frames_dir} 
+    mv  traceDiffFrame_* traceDiff_${frames_dir}/ || true
     """
 }
 
