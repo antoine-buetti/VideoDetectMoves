@@ -37,11 +37,14 @@
     ],
     "properties": {
         "thresh_moving": {
-            "type": "string",
-            "default": "0"
+            "type": "string"
+        },
+        "fuzz": {
+            "type": "string"
         }
     },
     "required": [
-        "thresh_moving"
+        "thresh_moving",
+        "fuzz"
     ]
 }
