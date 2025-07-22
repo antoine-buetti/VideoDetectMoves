@@ -135,7 +135,7 @@ process plot {
     # Set up the plot with log scale on y-axis
     plot(frame_numbers, movement_values,
          type='b',  # 'b' for both points and lines
-         log='y',   # log scale on y-axis
+    #     log='y',   # log scale on y-axis
          main='${data_movement.baseName}',
          xlab='Frame Number',
          ylab='Movement',
