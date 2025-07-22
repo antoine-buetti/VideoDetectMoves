@@ -94,7 +94,7 @@ process get_all_moving_frames {
     path traceDiff_frames_dir
 
     output:
-    path 'moving_frames_*', emit: moving_frames_dir, optional: true
+    path 'moving_frames_*', emit: moving_frames_dir, optional: true // to pass empty output and make seqera platform happy (in case of n moving frames)
 
     script:
     """
