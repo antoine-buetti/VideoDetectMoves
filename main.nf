@@ -64,23 +64,23 @@ process movement_spotter {
 
     output:
     path 'data_*.dat', emit: data_list
-    path 'traceDiff_*', emit: traceDiff_frames_dir, optional: true
+    path 'traceDiff_*', emit: traceDiff_frames_dir
 
     // stdout
 
     script:
     """
-    TMP_SCRIPT=$(mktemp)
+    TMP_SCRIPT=\$(mktemp)
     N=\$(ls ${frames_dir}/*.jpg | wc | awk '{print \$1}')
     for i in `seq 1 \$((\$N-1))`; do # last frame -2 because compare 2 a 2
     cmd=\$(printf "compare -metric AE -fuzz ${params.fuzz}%% ${frames_dir}/%08d.jpg ${frames_dir}/%08d.jpg traceDiffFrame_%08d 2>> data_${frames_dir}.dat ; echo >> data_${frames_dir}.dat \n" \$i \$((\$i+1)) \$i )
-    echo \$cmd >> $TMP_SCRIPT
+    echo \$cmd >> \$TMP_SCRIPT
     done
-    bash $TMP_SCRIPT
+    bash \$TMP_SCRIPT
 
     # spostare tutte le frames di diff pixel in dir apposita:
     mkdir traceDiff_${frames_dir}
-    mv  traceDiffFrame_* traceDiff_${frames_dir}/ || true
+    mv  traceDiffFrame_* traceDiff_${frames_dir}
     """
 }
 
@@ -99,10 +99,10 @@ process get_all_moving_frames {
 
     script:
     """
-    TMP_SCRIPT=$(mktemp)
+    TMP_SCRIPT=\$(mktemp)
     mkdir moving_frames_${frames_dir}
-    awk '{counter++; if(\$1>${params.thresh_moving}) {printf("cp ${frames_dir}/%08d.jpg ${traceDiff_frames_dir}/traceDiffFrame_%08d  moving_frames_${frames_dir} \\n"),counter,counter}}' ${movement_data_frames} > $TMP_SCRIPT
-    bash $TMP_SCRIPT
+    awk '{counter++; if(\$1>${params.thresh_moving}) {printf("cp ${frames_dir}/%08d.jpg ${traceDiff_frames_dir}/traceDiffFrame_%08d  moving_frames_${frames_dir} \\n"),counter,counter}}' ${movement_data_frames} > \$TMP_SCRIPT
+    bash \$TMP_SCRIPT
     """
 }
 
@@ -119,7 +119,7 @@ process plot {
 
     output:
     path "plot_${data_movement}.png"
-    
+
     script:
     """
     #!/usr/bin/env Rscript
@@ -137,7 +137,7 @@ process plot {
     # Set up the plot with log scale on y-axis
     plot(frame_numbers, movement_values,
          type='b',  # 'b' for both points and lines
-    #     log='y',   # log scale on y-axis
+    #     log='y',   # log scale on y-axis -> problem if 0 moving frames :)
          main='${data_movement.baseName}',
          xlab='Frame Number',
          ylab='Movement',
