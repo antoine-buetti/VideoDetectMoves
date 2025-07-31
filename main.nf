@@ -70,12 +70,13 @@ process movement_spotter {
 
     script:
     """
+    TMP_SCRIPT=$(mktemp)
     N=\$(ls ${frames_dir}/*.jpg | wc | awk '{print \$1}')
     for i in `seq 1 \$((\$N-1))`; do # last frame -2 because compare 2 a 2
     cmd=\$(printf "compare -metric AE -fuzz ${params.fuzz}%% ${frames_dir}/%08d.jpg ${frames_dir}/%08d.jpg traceDiffFrame_%08d 2>> data_${frames_dir}.dat ; echo >> data_${frames_dir}.dat \n" \$i \$((\$i+1)) \$i )
-    echo \$cmd >> tmp.sh
+    echo \$cmd >> $TMP_SCRIPT
     done
-    bash tmp.sh 
+    bash $TMP_SCRIPT
 
     # spostare tutte le frames di diff pixel in dir apposita:
     mkdir traceDiff_${frames_dir}
@@ -98,9 +99,10 @@ process get_all_moving_frames {
 
     script:
     """
+    TMP_SCRIPT=$(mktemp)
     mkdir moving_frames_${frames_dir}
-    awk '{counter++; if(\$1>${params.thresh_moving}) {printf("cp ${frames_dir}/%08d.jpg ${traceDiff_frames_dir}/traceDiffFrame_%08d  moving_frames_${frames_dir} \\n"),counter,counter}}' ${movement_data_frames} > tmp.sh
-    bash tmp.sh
+    awk '{counter++; if(\$1>${params.thresh_moving}) {printf("cp ${frames_dir}/%08d.jpg ${traceDiff_frames_dir}/traceDiffFrame_%08d  moving_frames_${frames_dir} \\n"),counter,counter}}' ${movement_data_frames} > $TMP_SCRIPT
+    bash $TMP_SCRIPT
     """
 }
 
