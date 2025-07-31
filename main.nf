@@ -38,7 +38,6 @@ log.info """\
 
 }
 
-
 process get_frames {
     tag "mplayer"
 
@@ -46,7 +45,7 @@ process get_frames {
     path input
 
     output:
-    path '*_frames', emit: frames_dir
+    path "${input.baseName}_frames", emit: frames_dir
 
     script:
     """
@@ -63,27 +62,27 @@ process movement_spotter {
     path frames_dir
 
     output:
-    path 'data_*.dat', emit: data_list
-    path 'traceDiff_*', emit: traceDiff_frames_dir
+    path "data_${frames_dir.baseName}.dat", emit: data_list
+    path "traceDiff_${frames_dir.baseName}", emit: traceDiff_frames_dir
 
-    // stdout
 
     script:
     """
     TMP_SCRIPT=\$(mktemp)
-    N=\$(ls ${frames_dir}/*.jpg | wc | awk '{print \$1}')
-    for i in `seq 1 \$((\$N-1))`; do # last frame -2 because compare 2 a 2
-    cmd=\$(printf "compare -metric AE -fuzz ${params.fuzz}%% ${frames_dir}/%08d.jpg ${frames_dir}/%08d.jpg traceDiffFrame_%08d 2>> data_${frames_dir}.dat ; echo >> data_${frames_dir}.dat \n" \$i \$((\$i+1)) \$i )
-    echo \$cmd >> \$TMP_SCRIPT
+    N=\$(ls ${frames_dir}/*.jpg | wc -l)
+
+    for i in \$(seq 1 \$((\$N-1))); do
+        cmd=\$(printf "compare -metric AE -fuzz ${params.fuzz}%% ${frames_dir}/%08d.jpg ${frames_dir}/%08d.jpg traceDiffFrame_${frames_dir.baseName}_%08d 2>> data_${frames_dir.baseName}.dat ; echo >> data_${frames_dir.baseName}.dat\\n" \$i \$((\$i+1)) \$i)
+        echo \$cmd >> \$TMP_SCRIPT
     done
+
     bash \$TMP_SCRIPT
 
-    # spostare tutte le frames di diff pixel in dir apposita:
-    mkdir traceDiff_${frames_dir}
-    mv  traceDiffFrame_* traceDiff_${frames_dir}
+    # Move all diff pixel frames to dedicated directory
+    mkdir traceDiff_${frames_dir.baseName}
+    mv traceDiffFrame_${frames_dir.baseName}_* traceDiff_${frames_dir.baseName}/
     """
 }
-
 
 process get_all_moving_frames {
     tag "ubuntu"
@@ -95,18 +94,24 @@ process get_all_moving_frames {
     path traceDiff_frames_dir
 
     output:
-    path 'moving_frames_*', emit: moving_frames_dir, optional: true // to pass empty output and make seqera platform happy (in case of n moving frames)
+    path "moving_frames_${frames_dir.baseName}", emit: moving_frames_dir, optional: true
 
     script:
     """
     TMP_SCRIPT=\$(mktemp)
-    mkdir moving_frames_${frames_dir}
-    awk '{counter++; if(\$1>${params.thresh_moving}) {printf("cp ${frames_dir}/%08d.jpg ${traceDiff_frames_dir}/traceDiffFrame_%08d  moving_frames_${frames_dir} \\n"),counter,counter}}' ${movement_data_frames} > \$TMP_SCRIPT
+    mkdir moving_frames_${frames_dir.baseName}
+
+    awk -v frames_dir="${frames_dir}" -v traceDiff_dir="${traceDiff_frames_dir}" -v output_dir="moving_frames_${frames_dir.baseName}" -v thresh="${params.thresh_moving}" '
+    {
+        counter++;
+        if(\$1 > thresh) {
+            printf("cp %s/%08d.jpg %s/traceDiffFrame_%s_%08d %s/\\n", frames_dir, counter, traceDiff_dir, "${frames_dir.baseName}", counter, output_dir)
+        }
+    }' ${movement_data_frames} > \$TMP_SCRIPT
+
     bash \$TMP_SCRIPT
     """
 }
-
-
 
 
 process plot {
