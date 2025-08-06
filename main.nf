@@ -6,51 +6,52 @@ params.fuzz=25
 params.thresh_moving=0
 
 workflow {
-/*
- * pipeline input parameters
- */
-log.info """\
+    log.info """\
     Movement Finder in Fixed-camera Videos
     ===================================
     input        : ${params.input_dir}
     outdir       : ${params.outdir}
     fuzz         : ${params.fuzz}
     thresh_moving: ${params.thresh_moving}
-
-    Example usage: nextflow run main.nf  --input your_folder_with_mp4_video_files  --outdir results  --fuzz 25  --thresh_moving 0
-    Output: "plot_...png" showing a profile of the video and how much movement was detected. "moving_frames_..." containing the snapshots extracted where the movement occurred, and the pixels that were tracked.
-
-    The parameter fuzz 15% means that pixels within 25% color difference are treated as equal. You can increase it to make it even more tolerant (a lower fuzz is more sensitive but more prone to noise).
     ===================================
     """
     .stripIndent()
 
+    // Create input channel with file basenames as metadata
     input_ch = Channel.fromPath("${params.input_dir}/*.mp4")
-    input_ch.view()
+        .map { file -> [file.baseName, file] }
 
+    // Process frames and maintain the relationship
     get_frames(input_ch)
-    get_frames.out.view()
-    movement_spotter(get_frames.out.frames_dir)
-    movement_spotter.out.traceDiff_frames_dir.view()
-    get_all_moving_frames(movement_spotter.out.data_list, get_frames.out.frames_dir,movement_spotter.out.traceDiff_frames_dir)
-    get_all_moving_frames.out.moving_frames_dir.view()
-    plot(movement_spotter.out.data_list)
 
+    // Process movement detection
+    movement_spotter(get_frames.out.frames_dir)
+
+    // Combine the outputs properly using the basename as key
+    combined_ch = movement_spotter.out.data_list
+        .join(get_frames.out.frames_dir)
+        .join(movement_spotter.out.traceDiff_frames_dir)
+
+    // Process moving frames
+    get_all_moving_frames(combined_ch)
+
+    // Plot results
+    plot(movement_spotter.out.data_list)
 }
 
 process get_frames {
     tag "mplayer"
 
     input:
-    path input
+    tuple val(basename), path(input)
 
     output:
-    path "${input.baseName}_frames", emit: frames_dir
+    tuple val(basename), path("${basename}_frames"), emit: frames_dir
 
     script:
     """
-    mkdir "${input.baseName}_frames"
-    mplayer -nosound -vo jpeg:outdir="${input.baseName}_frames" -speed 100 "$input" -benchmark
+    mkdir "${basename}_frames"
+    mplayer -nosound -vo jpeg:outdir="${basename}_frames" -speed 100 "$input" -benchmark
     """
 }
 
@@ -59,12 +60,11 @@ process movement_spotter {
     publishDir params.outdir, mode:'copy', pattern: 'data_*.dat'
 
     input:
-    path frames_dir
+    tuple val(basename), path(frames_dir)
 
     output:
-    path "data_${frames_dir.baseName}.dat", emit: data_list
-    path "traceDiff_${frames_dir.baseName}", emit: traceDiff_frames_dir
-
+    tuple val(basename), path("data_${basename}.dat"), emit: data_list
+    tuple val(basename), path("traceDiff_${basename}"), emit: traceDiff_frames_dir
 
     script:
     """
@@ -72,15 +72,15 @@ process movement_spotter {
     N=\$(ls ${frames_dir}/*.jpg | wc -l)
 
     for i in \$(seq 1 \$((\$N-1))); do
-        cmd=\$(printf "compare -metric AE -fuzz ${params.fuzz}%% ${frames_dir}/%08d.jpg ${frames_dir}/%08d.jpg traceDiffFrame_${frames_dir.baseName}_%08d 2>> data_${frames_dir.baseName}.dat ; echo >> data_${frames_dir.baseName}.dat\\n" \$i \$((\$i+1)) \$i)
+        cmd=\$(printf "compare -metric AE -fuzz ${params.fuzz}%% ${frames_dir}/%08d.jpg ${frames_dir}/%08d.jpg traceDiffFrame_${basename}_%08d 2>> data_${basename}.dat ; echo >> data_${basename}.dat\\n" \$i \$((\$i+1)) \$i)
         echo \$cmd >> \$TMP_SCRIPT
     done
 
     bash \$TMP_SCRIPT
 
     # Move all diff pixel frames to dedicated directory
-    mkdir traceDiff_${frames_dir.baseName}
-    mv traceDiffFrame_${frames_dir.baseName}_* traceDiff_${frames_dir.baseName}/
+    mkdir traceDiff_${basename}
+    mv traceDiffFrame_${basename}_* traceDiff_${basename}/
     """
 }
 
@@ -89,23 +89,21 @@ process get_all_moving_frames {
     publishDir params.outdir, mode:'copy'
 
     input:
-    path movement_data_frames
-    path frames_dir
-    path traceDiff_frames_dir
+    tuple val(basename), path(movement_data_frames), path(frames_dir), path(traceDiff_frames_dir)
 
     output:
-    path "moving_frames_${frames_dir.baseName}", emit: moving_frames_dir, optional: true
+    tuple val(basename), path("moving_frames_${basename}"), emit: moving_frames_dir, optional: true
 
     script:
     """
     TMP_SCRIPT=\$(mktemp)
-    mkdir moving_frames_${frames_dir.baseName}
+    mkdir moving_frames_${basename}
 
-    awk -v frames_dir="${frames_dir}" -v traceDiff_dir="${traceDiff_frames_dir}" -v output_dir="moving_frames_${frames_dir.baseName}" -v thresh="${params.thresh_moving}" '
+    awk -v frames_dir="${frames_dir}" -v traceDiff_dir="${traceDiff_frames_dir}" -v output_dir="moving_frames_${basename}" -v thresh="${params.thresh_moving}" '
     {
         counter++;
         if(\$1 > thresh) {
-            printf("cp %s/%08d.jpg %s/traceDiffFrame_%s_%08d %s/\\n", frames_dir, counter, traceDiff_dir, "${frames_dir.baseName}", counter, output_dir)
+            printf("cp %s/%08d.jpg %s/traceDiffFrame_%s_%08d %s/\\n", frames_dir, counter, traceDiff_dir, "${basename}", counter, output_dir)
         }
     }' ${movement_data_frames} > \$TMP_SCRIPT
 
@@ -113,14 +111,12 @@ process get_all_moving_frames {
     """
 }
 
-
 process plot {
     tag "R_plot"
-
     publishDir params.outdir, mode:'copy'
 
     input:
-    path data_movement
+    tuple val(basename), path(data_movement)
 
     output:
     path "plot_${data_movement}.png"
@@ -139,11 +135,10 @@ process plot {
     # Create the plot
     png('plot_${data_movement}.png', width=800, height=600)
 
-    # Set up the plot with log scale on y-axis
+    # Set up the plot
     plot(frame_numbers, movement_values,
          type='b',  # 'b' for both points and lines
-    #     log='y',   # log scale on y-axis -> problem if 0 moving frames :)
-         main='${data_movement.baseName}',
+         main='${basename}',
          xlab='Frame Number',
          ylab='Movement',
          pch=16,    # solid circles for points
@@ -158,5 +153,3 @@ process plot {
     cat('Plot saved as plot_${data_movement}.png\\n')
     """
 }
-
-
